@@ -1,0 +1,14 @@
+2021-03-23T09:00:08 Info   Tracer..cctor Initialize log c:\data\log\ThreadingIssue\ThreadingIssue2021-03-23_09-00-08.log
+2021-03-23T09:00:08 Info   ThreadingIssue.AutoOpen 
+2021-03-23T09:00:48 Debug Book5 ThreadingIssue.App_WorkbookActivateEvent 
+2021-03-23T09:00:49 Debug Book5 <ThreadRunner>d__15.MoveNext Starting Book5
+2021-03-23T09:00:49 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:50 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:51 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:52 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:53 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:54 Debug Book5 <ThreadRunner>d__15.MoveNext Running Book5
+2021-03-23T09:00:54 Debug Book5 ThreadingIssue.App_WorkbookBeforeCloseEvent C:\Users\raemyp\AppData\Roaming\Microsoft\Excel\XLSTART\xlwings.xlam
+2021-03-23T09:00:54 Debug Book5 ThreadingIssue.App_WorkbookBeforeCloseEvent Book5
+2021-03-23T09:00:54 Debug Book5 ThreadingIssue.App_WorkbookDeactivateEvent 
+2021-03-23T09:00:55 Debug  <ThreadRunner>d__15.MoveNext Done Book5

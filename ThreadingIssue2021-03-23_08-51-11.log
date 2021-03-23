@@ -1,0 +1,27 @@
+2021-03-23T08:51:11 Info   Tracer..cctor Initialize log c:\data\log\ThreadingIssue\ThreadingIssue2021-03-23_08-51-11.log
+2021-03-23T08:51:11 Info   ThreadingIssue.AutoOpen 
+2021-03-23T08:51:19 Debug Book5 ThreadingIssue.App_WorkbookActivateEvent 
+2021-03-23T08:51:28 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:30 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:38 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:38 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:35 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:50 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:50 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:50 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:51 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:51 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:51 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:52 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:52 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:52 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:53 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:53 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:53 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:54 Debug Book5 <MacroRunner>d__16.MoveNext Starting Book5
+2021-03-23T08:51:54 Debug Book5 <MacroRunner>d__16.MoveNext Running Book5
+2021-03-23T08:51:54 Debug Book5 <MacroRunner>d__16.MoveNext Requeued Book5
+2021-03-23T08:51:55 Debug Book5 ThreadingIssue.App_WorkbookBeforeCloseEvent C:\Users\raemyp\AppData\Roaming\Microsoft\Excel\XLSTART\xlwings.xlam
+2021-03-23T08:51:55 Debug Book5 ThreadingIssue.App_WorkbookBeforeCloseEvent Book5
+2021-03-23T08:51:55 Debug Book5 ThreadingIssue.App_WorkbookDeactivateEvent 
+2021-03-23T08:51:55 Debug  <MacroRunner>d__16.MoveNext Requeued Book5
