@@ -22,7 +22,7 @@ namespace Dna.ThreadingIssue
     // ReSharper disable once ClassNeverInstantiated.Global : instantiated by DNA
     public class ThreadingIssue : IExcelAddIn
     {
-        const bool USE_QUEUE_AS_MACRO = false;
+        const string THREADING_MODE = "THREAD";
 
         public static Excel.Workbook ThisWorkbook
         {
@@ -52,12 +52,20 @@ namespace Dna.ThreadingIssue
             ExcelApplication.WorkbookAfterSaveEvent   += App_WorkbookAfterSaveEvent;
             ExcelApplication.WorkbookBeforeSaveEvent  += App_WorkbookBeforeSaveEvent;
             ExcelApplication.WorkbookOpenEvent        += App_WorkbookOpenEvent;
-            Tracer.Info();
+            ExcelApplication.OnDispose += ExcelApplication_OnDispose;
+            NetOffice.Core.Default.ProxyCountChanged += Default_ProxyCountChanged;
+
+            Tracer.Debug();
+        }
+
+        void ExcelApplication_OnDispose(NetOffice.OnDisposeEventArgs eventArgs)
+        {
+            Tracer.Debug();
         }
 
         public void AutoClose()
         {
-            Tracer.Debug();
+            Tracer.Debug("Close");
         }
 
         static void App_WorkbookOpenEvent(Excel.Workbook wb)
@@ -101,9 +109,16 @@ namespace Dna.ThreadingIssue
         {
             Tracer.Debug();
             RunnerIsAlive = true;
-            if (USE_QUEUE_AS_MACRO)
-                ExcelAsyncUtil.QueueAsMacro(() => MacroRunner(wb, wb.Name));
-            else new Thread(() => ThreadRunner(wb, wb.Name)).Start();
+            switch (THREADING_MODE)
+            {
+                case "MACRO":
+                    ExcelAsyncUtil.QueueAsMacro(() => MacroRunner(wb, wb.Name));
+                    break;
+                case "THREAD":
+                    new Thread(() => ThreadRunner(wb, wb.Name)).Start();
+                    break;
+                default: break;
+            }
         }
 
         static async void ThreadRunner(Excel.Workbook wb, string name)
@@ -113,7 +128,11 @@ namespace Dna.ThreadingIssue
             {
                 try
                 {
-                    var _ = 1; //  wb.ActiveSheet;
+                    Tracer.Debug("before test", NetOffice.Core.Default.ProxyCount);
+                    var sheet = (Excel.Worksheet)wb.ActiveSheet;
+                    Tracer.Debug("In test", NetOffice.Core.Default.ProxyCount);
+                    sheet.ReleaseCOMProxy();
+                    Tracer.Debug("Out of test", NetOffice.Core.Default.ProxyCount);
                 }
                 catch (Exception) // if the workbook has no active sheet it means we've got an invalid workbook pointer, probably closed!
                 {
@@ -126,7 +145,22 @@ namespace Dna.ThreadingIssue
                 Tracer.Debug($"Running {name}");
                 await Task.Delay(1000);
             }
-            Tracer.Debug($"Done {name}");
+
+            try
+            {
+                NetOffice.Core.Default.DisposeAllCOMProxies();
+            }
+            catch(Exception e)
+            {
+                Tracer.Error(e);
+            }
+
+            Tracer.Debug($"Done {name}. Proxies disposed of");
+        }
+
+        static void Default_ProxyCountChanged(int proxyCount)
+        {
+            Tracer.Debug(proxyCount);
         }
 
         static async void MacroRunner(Excel.Workbook wb, string name)

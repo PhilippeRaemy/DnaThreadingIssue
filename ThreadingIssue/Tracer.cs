@@ -39,7 +39,7 @@
         }
 
         static void Write(string severity, IEnumerable<object> message, int depth) 
-            => WriteLine($"{DateTime.UtcNow:s} {severity} {ThreadingIssue.ThisWorkbook?.FullName} {CallingMethod(depth)} {message.ToDelimitedString(" ")}");
+            => WriteLine($"{DateTime.UtcNow:s} {severity} {CallingMethod(depth)} {message.ToDelimitedString(" ")}");
 
         public static void Info (params object[] message) => Write("Info ", message, 3);
         public static void Debug(params object[] message) => Write("Debug", message, 3);
